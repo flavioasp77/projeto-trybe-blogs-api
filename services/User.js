@@ -10,7 +10,12 @@ const create = async (newUser) => {
     },
   });
 
-  if (user) return { message: 'User already registered' };
+  if (user) {
+    return {
+      status: true,
+      message: 'User already registered',
+    };
+  }
   
   return created;
 };
