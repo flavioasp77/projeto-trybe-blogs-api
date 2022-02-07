@@ -1,25 +1,18 @@
-const Users = require('../models');
+const { User } = require('../models');
 
-const create = async (newUser) => {
-  const [user, created] = await Users.findOrCreate({
-    where: {
-      email: newUser.email,
-    },
-    default: {
-      newUser,
-    },
-  });
-
-  if (user) {
-    return {
-      status: true,
-      message: 'User already registered',
-    };
-  }
+const createUser = async (newUser) => {
+ const userExist = await User.findOne({ where: { email: newUser.email } });
   
-  return created;
+ if (userExist) {
+   return {
+     status: true,
+     message: 'User already registered',
+   };
+ }
+ const user = await User.create(newUser);
+ return user;
 };
 
 module.exports = {
-  create,
+  createUser,
 };
