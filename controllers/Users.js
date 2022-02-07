@@ -4,10 +4,8 @@ const createUser = async (req, res) => {
   const newUser = req.body;
   const user = await User.createUser(newUser);
 
-  if (user.status) return res.status(409).json({ message: user.message });
-  return res.status(201).json({
-    message: 'usuario cadastrado',
-  });
+  if (user.status) res.status(409).json({ message: user.message });
+  return res.status(201).json({ token: 'Usuário cadastrado' });
 };
 
 module.exports = {
