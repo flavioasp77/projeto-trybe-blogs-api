@@ -16,6 +16,7 @@ app.post('/user',
   controller.createUser);
 
 app.post('/login',
+  middlewares.validateLogin,
   middlewares.validateEmail,
   middlewares.validatePassword,
   login);  
