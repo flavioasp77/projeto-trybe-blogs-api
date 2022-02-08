@@ -13,6 +13,20 @@ const createUser = async (newUser) => {
  return user;
 };
 
+const userLogin = async ({ email, password }) => {
+  const user = await User.findOne({ where: { email } });
+  
+  if (!user || user.password !== password) {
+    return {
+      status: true,
+      message: 'Invalid fields',
+    };
+  }
+  
+  return user;
+};
+
 module.exports = {
   createUser,
+  userLogin,
 };
