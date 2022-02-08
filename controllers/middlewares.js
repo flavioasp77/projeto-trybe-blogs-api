@@ -34,8 +34,12 @@ const validateEmail = (req, res, next) => {
   const regexEmail = /\S+@\S+\.\S+/;
   const validEmail = regexEmail.test(email);
 
-  if (!email || email === '') {
+  if (!email) {
     return res.status(400).json({ message: '"email" is required' });
+  }
+
+  if (email === '') {
+    return res.status(400).json({ message: '"email" is not allowed to be empty' });
   }
 
   if (!validEmail) {
@@ -47,8 +51,12 @@ const validateEmail = (req, res, next) => {
 const validatePassword = (req, res, next) => {
   const { password } = req.body;
 
-  if (!password || password === '') {
+  if (!password) {
     return res.status(400).json({ message: '"password" is required' });
+  }
+
+  if (password === '') {
+    return res.status(400).json({ message: '"password" is not allowed to be empty' });
   }
 
   if (password.length !== 6) {
