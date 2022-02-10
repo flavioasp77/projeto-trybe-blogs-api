@@ -1,15 +1,15 @@
-const User = require('../services/User');
+const userService = require('../services/User');
 
 const createUser = async (req, res) => {
   const newUser = req.body;
-  const user = await User.createUser(newUser);
+  const user = await userService.createUser(newUser);
 
-  if (user.status) res.status(409).json({ message: user.message });
+  if (user.status) return res.status(409).json({ message: user.message });
   return res.status(201).json({ token: 'Usuário cadastrado' });
 };
 
 const getAll = async (_req, res) => {
-  const allUsers = await User.getAll();
+  const allUsers = await userService.getAll();
   return res.status(200).json(allUsers);
 };
 

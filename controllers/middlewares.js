@@ -71,20 +71,15 @@ const validateLogin = (req, res, next) => {
   next();
 };
 
-const validateJWT = async (req, res, next) => {
+const validateJWT = (req, res, next) => {
   const token = req.headers.authorization;
 
-  if (!token) {
+  if (!token || token === '') {
     return res.status(401).json({ message: 'Token not found' });
   }
 
-  const validToken = jwt.verify(token, SECRET);
-
-  if (!validToken) {
-    return res.status(401).json({ message: 'Expired or invalid token' });
-  }
-  
-  next();
+    jwt.verify(req.headers.authorization, SECRET);
+    next();
 }; 
 
 module.exports = {
