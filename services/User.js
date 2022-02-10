@@ -28,7 +28,6 @@ const userLogin = async ({ email, password }) => {
 
 const getAll = async () => {
   const allUsers = await User.findAll();
-  console.log('services', allUsers);
   return allUsers;
 };
 

@@ -14,6 +14,7 @@ const createToken = async (email) => {
   delete user.password;
 
   const token = jwt.sign({ payload: user }, SECRET, jwtconfig);
+  console.log(token);
   return token;
 };
 
@@ -71,15 +72,23 @@ const validateLogin = (req, res, next) => {
   next();
 };
 
-const validateJWT = (req, res, next) => {
-  const token = req.headers.authorization;
+const validateJWT = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization;
 
-  if (!token || token === '') {
-    return res.status(401).json({ message: 'Token not found' });
-  }
+    if (!token || token === '') {
+      return res.status(401).json({ message: 'Token not found' });
+    }
 
-    jwt.verify(req.headers.authorization, SECRET);
-    next();
+    const { payload } = jwt.verify(token, SECRET);
+    req.user = payload.id;
+
+    return next();
+  } catch (err) {
+    if (err) {
+      return res.status(401).json({ message: 'Expired or invalid token' });
+    }
+  }  
 }; 
 
 module.exports = {

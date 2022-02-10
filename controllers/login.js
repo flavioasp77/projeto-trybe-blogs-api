@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
     return res.status(400).json({ message: user.message });
   }
 
-  const token = createToken(email);
+  const token = await createToken(email);
 
   return res.status(200).json({ token });
 };
