@@ -9,9 +9,11 @@ module.exports = {
       },
       categoryId: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
-        allowNull: false
-      }
+        reference: {
+          model: 'categories',
+          key: 'id',
+        }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
