@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { Category } = require('../models');
+const { Categories } = require('../models');
 
 const createUser = async (newUser) => {
  const userExist = await User.findOne({ where: { email: newUser.email } });
@@ -45,7 +45,10 @@ const getUserById = async (id) => {
   return user;
 };
 
-const createCategory = async (name) => Category.create(name);
+const createCategory = async (name) => {
+  const category = await Categories.create({ name });
+  return category;
+};
 
 module.exports = {
   createUser,
