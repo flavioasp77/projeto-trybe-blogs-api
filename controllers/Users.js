@@ -22,8 +22,17 @@ const getUserById = async (req, res) => {
   return res.status(200).json(user);
 };
 
+const createCategory = async (req, res) => {
+  const { name } = req.body;
+
+  const category = await userService.createCategory(name);
+
+  return res.status(201).json(category);  
+};
+
 module.exports = {
   createUser,
   getAll,
   getUserById,
+  createCategory,
 };
