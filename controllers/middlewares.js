@@ -99,7 +99,31 @@ const validateJWT = async (req, res, next) => {
       return res.status(401).json({ message: 'Expired or invalid token' });
     }
   }  
-}; 
+};
+
+const validateTitle = (req, res) => {
+  const { title } = req.body;
+
+  if (!title) {
+    return res.status(400).json({ message: '"title" is required' });
+  }
+};
+
+const validateContent = (req, res) => {
+  const { content } = req.body;
+
+  if (!content) {
+    return res.status(400).json({ message: '"content" is required' });
+  }
+};
+
+const validateCategoryIds = (req, res) => {
+  const { categoryIds } = req.body;
+
+  if (!categoryIds) {
+    return res.status(400).json({ message: '"categoryIds" is required' });
+  }
+};
 
 module.exports = {
   createToken,
@@ -109,4 +133,7 @@ module.exports = {
   validateLogin,
   validateJWT,
   validateName,
+  validateTitle,
+  validateContent,
+  validateCategoryIds,
 };
