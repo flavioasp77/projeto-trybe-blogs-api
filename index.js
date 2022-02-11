@@ -27,7 +27,8 @@ app.get('/user',
   controller.getAll);
   
 app.get('user/:id',
-  middlewares.validateJWT);  
+  middlewares.validateJWT,
+  controller.getUserById);  
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (request, response) => {
