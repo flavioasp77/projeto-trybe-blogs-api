@@ -26,7 +26,7 @@ app.get('/user',
   middlewares.validateJWT,
   controller.getAll);
   
-app.get('user/:id',
+app.get('/user/:id',
   middlewares.validateJWT,
   controller.getUserById);  
 
