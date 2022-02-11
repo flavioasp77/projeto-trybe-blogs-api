@@ -33,7 +33,11 @@ app.get('/user/:id',
 app.post('/categories',
   middlewares.validateName,
   middlewares.validateJWT,
-  controller.createCategory);  
+  controller.createCategory);
+
+app.get('/categories',
+  middlewares.validateJWT,
+  controller.getAllCategories);  
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (request, response) => {
