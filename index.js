@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const controller = require('./controllers/Users');
+const userController = require('./controllers/Users');
+const categoryController = require('./controllers/Categories');
 const middlewares = require('./controllers/middlewares');
 const login = require('./controllers/login');
 
@@ -14,7 +15,7 @@ app.post('/user',
   middlewares.validateDisplayName,
   middlewares.validateEmail,
   middlewares.validatePassword,
-  controller.createUser);
+  userController.createUser);
 
 app.post('/login',
   middlewares.validateLogin,
@@ -24,20 +25,20 @@ app.post('/login',
 
 app.get('/user',
   middlewares.validateJWT,
-  controller.getAllUsers);
+  userController.getAllUsers);
   
 app.get('/user/:id',
   middlewares.validateJWT,
-  controller.getUserById);
+  userController.getUserById);
 
 app.post('/categories',
   middlewares.validateName,
   middlewares.validateJWT,
-  controller.createCategory);
+  categoryController.createCategory);
 
 app.get('/categories',
   middlewares.validateJWT,
-  controller.getAllCategories);  
+  categoryController.getAllCategories);  
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (request, response) => {

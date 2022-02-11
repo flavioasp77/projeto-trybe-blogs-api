@@ -1,5 +1,4 @@
 const { User } = require('../models');
-const { Categories } = require('../models');
 
 const createUser = async (newUser) => {
  const userExist = await User.findOne({ where: { email: newUser.email } });
@@ -45,21 +44,9 @@ const getUserById = async (id) => {
   return user;
 };
 
-const createCategory = async (name) => {
-  const category = await Categories.create({ name });
-  return category;
-};
-
-const getAllCategories = async () => {
-  const allCategories = await Categories.findAll();
-  return allCategories;
-};
-
 module.exports = {
   createUser,
   userLogin,
   getAllUsers,
   getUserById,
-  createCategory,
-  getAllCategories,
 };
