@@ -8,8 +8,8 @@ const createUser = async (req, res) => {
   return res.status(201).json({ token: 'Usuário cadastrado' });
 };
 
-const getAll = async (_req, res) => {
-  const allUsers = await userService.getAll();
+const getAllUsers = async (_req, res) => {
+  const allUsers = await userService.getAllUsers();
   return res.status(200).json(allUsers);
 };
 
@@ -32,7 +32,7 @@ const createCategory = async (req, res) => {
 
 module.exports = {
   createUser,
-  getAll,
+  getAllUsers,
   getUserById,
   createCategory,
 };

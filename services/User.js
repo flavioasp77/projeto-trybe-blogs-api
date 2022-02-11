@@ -27,7 +27,7 @@ const userLogin = async ({ email, password }) => {
   return user;
 };
 
-const getAll = async () => {
+const getAllUsers = async () => {
   const allUsers = await User.findAll();
   return allUsers;
 };
@@ -50,10 +50,16 @@ const createCategory = async (name) => {
   return category;
 };
 
+const getAllCategories = async () => {
+  const allCategories = await Categories.findAll();
+  return allCategories;
+};
+
 module.exports = {
   createUser,
   userLogin,
-  getAll,
+  getAllUsers,
   getUserById,
   createCategory,
+  getAllCategories,
 };

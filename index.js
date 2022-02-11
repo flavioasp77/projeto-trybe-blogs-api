@@ -24,7 +24,7 @@ app.post('/login',
 
 app.get('/user',
   middlewares.validateJWT,
-  controller.getAll);
+  controller.getAllUsers);
   
 app.get('/user/:id',
   middlewares.validateJWT,
