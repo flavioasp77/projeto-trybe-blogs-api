@@ -11,11 +11,15 @@ const getAllCategories = async () => {
 };
 
 const findCategoryById = async (categoryIds) => {
-  const findCategory = await Promise.All(
+  const findCategory = await Promise.all(
     categoryIds.map(async (id) => {
-      await Categories.findByPk(id);
+      const categoryId = await Categories.findByPk(id);
+      console.log(categoryId);
+      return categoryId;
     }),
   );
+  console.log(categoryIds);
+  console.log(findCategory);
 
   return findCategory.some((id) => id);  
 };

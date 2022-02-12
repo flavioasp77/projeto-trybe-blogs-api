@@ -1,4 +1,7 @@
 'use strict';
+
+const { dateToString } = require("sqlstring");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('BlogPosts', {
@@ -23,13 +26,17 @@ module.exports = {
           key: 'id',
         }
       },  
-      published: {
+      createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'published',
+        defaultValue: new Date(),
       },
-      updated: {
+      updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field: 'updated',
+        defaultValue: new Date(),
       }
     });
   },
