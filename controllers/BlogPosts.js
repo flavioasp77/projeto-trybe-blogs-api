@@ -25,12 +25,12 @@ const getAllPosts = async (_req, res) => {
 const getPostById = async (req, res) => {
   const { id } = req.params;
   const postById = await postServices.getPostById(id);
-
+  console.log('controller ===========>', postById);
   if (postById.status) {
     return res.status(404).json({ message: postById.message });
   }
 
-  return postById;
+  return res.status(200).json(postById);
 };
 
 module.exports = {

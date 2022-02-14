@@ -24,12 +24,13 @@ const getAllPosts = async () => {
 };
 
 const getPostById = async (id) => {
-  const postById = await BlogPosts.findByPk(id, {
-    include: [{ model: User, as: 'user' },
+const postById = await BlogPosts.findByPk(id, {
+    include: [
+      { model: User, as: 'user' },
       { model: Categories, as: 'categories', through: { attributes: [] } },
     ],
   });
-
+  console.log('Service ===========>', postById);
   if (!postById) {
     return {
       status: true,
