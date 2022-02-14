@@ -48,6 +48,10 @@ app.post('/post',
   middlewares.validateCategoryIds,
   postController.createPost);
 
+app.get('/post',
+ middlewares.validateJWT,
+ postController.getAllPosts);  
+
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (request, response) => {
   response.send();

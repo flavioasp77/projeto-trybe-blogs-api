@@ -1,5 +1,5 @@
 module.exports = (sequelize, _DataTypes) => {
- const PostsCategories = sequelize.define('PostsCategories', 
+ const PostsCategories = sequelize.define('PostsCategories', {},
     { timestamps: false });
 
     PostsCategories.associate = (models) => {
