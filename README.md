@@ -1,6 +1,6 @@
 
 # Projeto One For All
-- Neste projeto do curso da [Trybe](https://www.betrybe.com/), construí um backend utilidanco `ORM` como o pacote `SEQUELIZE.
+- Neste projeto do curso da [Trybe](https://www.betrybe.com/), construí um backend utilidanco `ORM` como o pacote `SEQUELIZE`.
 
 # Habilidades desenvolvidas:
 
